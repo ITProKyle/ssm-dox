@@ -7,7 +7,7 @@ from click.testing import CliRunner
 from mock import MagicMock
 
 from ssm_dox._cli.main import cli
-from ssm_dox.constants import RAW_DOX, SHARED_SSM_DOCS
+from ssm_dox.constants import DOCUMENTS_DIR, DOX_DIR
 from ssm_dox.dox import Dox
 from ssm_dox.exceptions import DocumentDrift
 from ssm_dox.finder import Finder
@@ -67,6 +67,6 @@ def test_check_default(dox_dir: Path, mocker: MockerFixture) -> None:
     )
     runner = CliRunner()
     result = runner.invoke(cli, ["check"])
-    mock_finder.assert_called_once_with(root_dir=RAW_DOX)
-    mock_dox_check.assert_called_once_with(SHARED_SSM_DOCS)
+    mock_finder.assert_called_once_with(root_dir=DOX_DIR)
+    mock_dox_check.assert_called_once_with(DOCUMENTS_DIR)
     assert result.exit_code == 0

@@ -39,6 +39,6 @@
     ],
     "restructuredtext.preview.scrollEditorWithPreview": false,
     "restructuredtext.preview.scrollPreviewWithEditor": false,
-    "restructuredtext.sphinxBuildPath": "${workspaceFolder}/docs/.venv/bin/sphinx-build",
+    "restructuredtext.sphinxBuildPath": "${workspaceFolder}/.venv/bin/sphinx-build",
     "restructuredtext.updateOnTextChanged": "true"
 }

@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 from click.testing import CliRunner
 
 from ssm_dox._cli.main import cli
-from ssm_dox.constants import RAW_DOX, SHARED_SSM_DOCS
+from ssm_dox.constants import DOCUMENTS_DIR, DOX_DIR
 from ssm_dox.dox import Dox
 from ssm_dox.finder import Finder
 
@@ -39,8 +39,8 @@ def test_build_default(dox_dir: Path, mocker: MockerFixture) -> None:
     )
     runner = CliRunner()
     result = runner.invoke(cli, ["build"])
-    mock_finder.assert_called_once_with(root_dir=RAW_DOX)
-    mock_dox_build.assert_called_once_with(SHARED_SSM_DOCS)
+    mock_finder.assert_called_once_with(root_dir=DOX_DIR)
+    mock_dox_build.assert_called_once_with(DOCUMENTS_DIR)
     assert result.exit_code == 0
 
 

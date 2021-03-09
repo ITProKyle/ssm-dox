@@ -8,7 +8,7 @@ from click.testing import CliRunner
 from mock import ANY
 
 from ssm_dox._cli.main import cli
-from ssm_dox.constants import DEFAULT_S3_BUCKET, SHARED_SSM_DOCS
+from ssm_dox.constants import DOCUMENTS_DIR
 from ssm_dox.document import Document
 from ssm_dox.finder import Finder
 
@@ -46,7 +46,7 @@ def test_publish_default(
         f"{MODULE}.Finder", return_value=Finder(root_dir=documents_dir)
     )
     runner = CliRunner()
-    result = runner.invoke(cli, ["publish"])
-    mock_finder.assert_called_once_with(root_dir=SHARED_SSM_DOCS)
-    mock_publish.assert_called_once_with(ANY, bucket=DEFAULT_S3_BUCKET, prefix="dev")
+    result = runner.invoke(cli, ["publish", "test-bucket"])
+    mock_finder.assert_called_once_with(root_dir=DOCUMENTS_DIR)
+    mock_publish.assert_called_once_with(ANY, bucket="test-bucket", prefix="dev")
     assert result.exit_code == 0
