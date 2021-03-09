@@ -1,7 +1,7 @@
 """AWS SSM Document parameter data model."""
 from __future__ import annotations
 
-from typing import Any, Dict, List, Literal, Optional, Union, cast
+from typing import Any, Dict, List, Literal, Optional, cast
 
 from pydantic import validator
 
@@ -19,17 +19,7 @@ class SsmDocumentParameterDataModel(BaseModel):
 
     allowedPattern: Optional[str] = None
     allowedValues: Optional[List[str]] = None
-    default: Optional[
-        Union[
-            bool,
-            List[Dict[str, str]],
-            List[str],
-            Dict[str, str],
-            Dict[str, List[str]],
-            int,
-            str,
-        ]
-    ] = None
+    default: Any = None
     description: Optional[str] = None
     displayType: Optional[Literal["textarea", "testfield"]] = None
     maxChars: Optional[int] = None

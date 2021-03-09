@@ -11,7 +11,7 @@ from ssm_dox.models.parameter import SsmDocumentParameterDataModel
 class TestSsmDocumentParameterDataModel:
     """Test SsmDocumentParameterDataModel."""
 
-    @pytest.mark.parametrize("value", [False, 0, "False", ""])
+    @pytest.mark.parametrize("value", [False, 0, ""])
     def test_default_bool_false(self, value: Any) -> None:
         """Test default bool."""
         obj = SsmDocumentParameterDataModel.parse_obj(
@@ -19,7 +19,7 @@ class TestSsmDocumentParameterDataModel:
         )
         assert obj.default is False
 
-    @pytest.mark.parametrize("value", ["test", 13, "13", True, "True"])
+    @pytest.mark.parametrize("value", ["test", 13, "13", True, "False", "True"])
     def test_default_bool_true(self, value: Any) -> None:
         """Test default bool."""
         obj = SsmDocumentParameterDataModel.parse_obj(
@@ -56,7 +56,7 @@ class TestSsmDocumentParameterDataModel:
         assert error["loc"] == ("default",)
         assert error["type"] == "type_error"
 
-    @pytest.mark.parametrize("value", [None, "test", 13, "13", True, False])
+    @pytest.mark.parametrize("value", [None, "test", 13, "13", True, False, ""])
     def test_default_string(self, value: Any) -> None:
         """Test default."""
         obj = SsmDocumentParameterDataModel.parse_obj(
