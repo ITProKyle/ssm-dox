@@ -1,0 +1,11 @@
+{
+  "name": "ssm-dox",
+  "version": "0.0.0",
+  "description": "Used exclusively to lock the version of pyright for linting this project.",
+  "scripts": {
+    "py-type-check": "pyright --venv-path ./"
+  },
+  "devDependencies": {
+    "pyright": "^1.1.97"
+  }
+}

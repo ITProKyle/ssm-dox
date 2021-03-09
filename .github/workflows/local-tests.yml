@@ -1,21 +1,23 @@
-name: pre-commit
+name: local tests
 
 on:
-  pull_request:
   push:
-    branches:
-      - master
 
 jobs:
-  pre-commit:
+  pytest:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-python@v2
         with:
           python-version: 3.8
+      - uses: actions/cache@v2
+        with:
+          key: ${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
+          path: .venv
       - name: Install Poetry
         uses: Gr1N/setup-poetry@v4
       - name: Install Dependencies
         run: poetry install --extras docs -vv
-      - uses: pre-commit/action@v2.0.0
+      - name: Run Tests
+        run: make test

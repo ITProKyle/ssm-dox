@@ -10,7 +10,10 @@
         ],
         "editor.tabSize": 4
     },
-    "cSpell.words": [],
+    "cSpell.words": [
+        "nowarn",
+        "rglob"
+    ],
     "files.insertFinalNewline": true,
     "python.analysis.typeCheckingMode": "basic",
     "python.formatting.provider": "black",
@@ -36,6 +39,6 @@
     ],
     "restructuredtext.preview.scrollEditorWithPreview": false,
     "restructuredtext.preview.scrollPreviewWithEditor": false,
-    "restructuredtext.sphinxBuildPath": "${workspaceFolder}/docs/.venv/bin/sphinx-build",
+    "restructuredtext.sphinxBuildPath": "${workspaceFolder}/.venv/bin/sphinx-build",
     "restructuredtext.updateOnTextChanged": "true"
 }

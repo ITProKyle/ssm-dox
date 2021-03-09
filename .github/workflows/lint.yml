@@ -21,6 +21,6 @@ jobs:
       - name: Install Poetry
         uses: Gr1N/setup-poetry@v4
       - name: Install Dependencies
-        run: poetry install -vv
+        run: poetry install --extras docs -vv
       - name: Run Linters
         run: make lint
