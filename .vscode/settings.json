@@ -10,7 +10,9 @@
         ],
         "editor.tabSize": 4
     },
-    "cSpell.words": [],
+    "cSpell.words": [
+        "rglob"
+    ],
     "files.insertFinalNewline": true,
     "python.analysis.typeCheckingMode": "basic",
     "python.formatting.provider": "black",

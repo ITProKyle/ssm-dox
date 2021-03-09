@@ -31,7 +31,7 @@ fix-black: ## automatically fix all black errors
 fix-isort: ## automatically fix all isort errors
 	@poetry run isort .
 
-lint: lint-isort lint-black lint-flake8 lint-pylint  ## run all linters
+lint: lint-isort lint-black lint-flake8 lint-pyright lint-pylint  ## run all linters
 
 lint-black: ## run black
 	@echo "Running black... If this fails, run 'make fix-black' to resolve."
@@ -55,7 +55,12 @@ lint-isort: ## run isort
 
 lint-pylint: ## run pylint
 	@echo "Running pylint..."
-	@poetry run pylint --rcfile=pyproject.toml ssm_dox --reports=${REPORTS}
+	@poetry run pylint --rcfile=pyproject.toml ssm_dox tests --reports=${REPORTS}
+	@echo ""
+
+lint-pyright: ## run pyright
+	@echo "Running pyright..."
+	@npx pyright --venv-path ./
 	@echo ""
 
 run-pre-commit:
@@ -68,3 +73,6 @@ setup-poetry: ## setup poetry environment
 
 setup-pre-commit: ## setup pre-commit
 	@poetry run pre-commit install
+
+test: ## run tests
+	@poetry run pytest --cov=ssm_dox --cov-report term-missing:skip-covered

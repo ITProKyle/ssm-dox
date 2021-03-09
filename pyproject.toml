@@ -33,15 +33,29 @@ classifiers = [
 [tool.poetry.dependencies]
 python = "^3.8"
 
+boto3 = "^1.17.23"
+click = "^7.1.2"
+coloredlogs = "^15.0"
+pydantic = "^1.8.1"
+PyYAML = ">=4.1,<5.3"
+
 [tool.poetry.dev-dependencies]
 black = "^20.8b1"
+boto3-stubs = {extras = ["s3"], version = "^1.17.23"}
 flake8 = "^3.8.4"
 flake8-docstrings = "^1.5.0"
 isort = "^5.7.0"
+mock = "^4.0.3"
 pep8-naming = "^0.11.1"
 pre-commit = "^2.11.0"
 pydocstyle = "^5.1.1"
 pylint = "^2.7.2"
+pytest = "^6.2.2"
+pytest-cov = "^2.11.1"
+pytest-mock = "^3.5.1"
+
+[tool.poetry.scripts]
+ssm-dox = "ssm_dox._cli.main:cli"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
@@ -63,6 +77,23 @@ exclude = '''
 include = '\.pyi?$'
 line-length = 88
 target-version = ['py38']
+
+
+[tool.coverage.report]
+exclude_lines = [
+  "@overload",
+  "cov: ignore",  # standard exclude comment
+  "except PackageNotFoundError:",
+  "if __name__ == .__main__.:",
+  "if sys.version_info",
+  "if TYPE_CHECKING:",  # excluded blocks
+  "raise AssertionError",  # defensive exceptions
+  "raise NotImplimentedError",
+]
+omit = [
+  "**/type_defs.py",
+  "**/type_defs/*.py"
+]
 
 
 [tool.isort]
@@ -177,3 +208,23 @@ disable = [
 msg-template="{path}:{line}:{column}: {msg_id}: {msg} ({symbol})"
 output-format="colorized"
 score="yes"
+
+
+[tool.pytest.ini_options]
+addopts = [
+  "--code-highlight=yes",
+  "--color=auto",
+  "--cov-config=pyproject.toml",
+  "--no-cov-on-fail",
+  "--strict-markers",
+]
+filterwarnings = ["ignore::DeprecationWarning", "ignore::FutureWarning:"]
+minversion = 6.0
+mock_use_standalone_module = true
+python_classes = ["Test*"]
+python_files = ["test_*.py"]
+python_functions = ["test_*"]
+testpaths = ["tests"]
+markers = [
+  "wip: isolate tests currently being worked on."
+]
