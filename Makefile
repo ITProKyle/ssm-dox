@@ -55,7 +55,7 @@ lint-isort: ## run isort
 
 lint-pylint: ## run pylint
 	@echo "Running pylint..."
-	@poetry run pylint --rcfile=pyproject.toml ssm_dox_builder tests --reports=${REPORTS}
+	@poetry run pylint --rcfile=pyproject.toml ssm_dox --reports=${REPORTS}
 	@echo ""
 
 run-pre-commit:
