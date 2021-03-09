@@ -11,20 +11,3 @@ This is a test.
   :name: example
 
   example
-  example
-  example
-  example
-  example
-  example
-  example
-  example
-  example
-  example
-  example
-  example
-  example
-  example
-  example
-  example
-  example
-  example
