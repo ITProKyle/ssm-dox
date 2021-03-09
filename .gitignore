@@ -3,4 +3,5 @@
 *.DS_Store
 *.pyc
 dist
+docs/build/
 node_modules/

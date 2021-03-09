@@ -1,0 +1,9 @@
+{% extends "!layout.html" -%}
+{% block linktags -%}
+  {# Convert to ISO 639-1 format, e.g. zh_CN -> zh-cn -#}
+  {{ super() }}
+{% endblock -%}
+
+{% block htmltitle -%}
+<title>{{ title|striptags|e }}{{ titlesuffix }}</title>
+{% endblock -%}

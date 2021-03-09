@@ -1,4 +1,4 @@
-.PHONY: test
+.PHONY: docs test
 
 REPORTS := $(if $(REPORTS),yes,$(if $(CI),yes,no))
 SHELL := /bin/bash
@@ -24,6 +24,26 @@ help: ## show this message
 		printf '\033[0m'; \
 		printf "%s\n" $$help_info; \
 	done
+
+docs: ## removes the currentli built docs, builds HTML docs, then opens the docs
+	@pushd docs && \
+	make docs && \
+	popd
+
+docs-clean: ## removes the currentli built docs
+	@pushd docs && \
+	make clean && \
+	popd
+
+docs-html: ## builds HTML docs,
+	@pushd docs && \
+	make html && \
+	popd
+
+docs-open: ## opens the docs
+	@pushd docs && \
+	make open && \
+	popd
 
 fix-black: ## automatically fix all black errors
 	@poetry run black .
@@ -72,7 +92,7 @@ setup-poetry: ## setup poetry environment
 	@poetry install
 
 setup-pre-commit: ## setup pre-commit
-	@poetry run pre-commit install
+	@poetry run pre-commit install --remove-untracked --extras docs
 
 test: ## run tests
 	@poetry run pytest --cov=ssm_dox --cov-report term-missing:skip-covered
