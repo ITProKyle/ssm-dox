@@ -1,0 +1,41 @@
+categories:
+  - title: '🚀 Features'
+    labels:
+      - feature
+  - title: '🐛 Bug Fixes'
+    labels:
+      - bug
+  - title: '🧶 Dependencies'
+    labels:
+      - dependencies
+  - title: '📖 Doc Updates'
+    labels:
+      - documentation
+  - title: '🧰 Maintenance'
+    label: maintenance
+
+exclude-labels:
+  - documentation
+  - release
+  - skip-changelog
+
+change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
+category-template: "### $TITLE"
+name-template: 'v$RESOLVED_VERSION'
+tag-template: 'v$RESOLVED_VERSION'
+template: |
+  ## What Changed
+
+  $CHANGES
+
+version-resolver:
+  major:
+    labels:
+      - major
+  minor:
+    labels:
+      - minor
+  patch:
+    labels:
+      - patch
+  default: minor
