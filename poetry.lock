@@ -1265,7 +1265,7 @@ docs = ["readthedocs-sphinx-search", "Sphinx", "sphinx-rtd-theme", "toml"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "5f14eb121a85e4ffe4021327cf028995dfbbd568a7b2b62ff99745d240f3a70d"
+content-hash = "42d4ad0b0bc8b85c04c099c3de80c3e760b02b24772eb236a4bf6ac046b2a997"
 
 [metadata.files]
 alabaster = [
