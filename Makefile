@@ -89,10 +89,12 @@ run-pre-commit:
 setup: setup-poetry setup-pre-commit  ## setup development environment
 
 setup-poetry: ## setup poetry environment
-	@poetry install
+	@poetry install \
+		--extras docs \
+		--remove-untracked
 
 setup-pre-commit: ## setup pre-commit
-	@poetry run pre-commit install --remove-untracked --extras docs
+	@poetry run pre-commit install
 
 test: ## run tests
 	@poetry run pytest --cov=ssm_dox --cov-report term-missing:skip-covered

@@ -65,6 +65,6 @@ class TestAwsRunPowerShellScriptInputs:
     def test_optional_fields_default(self) -> None:
         """Test optional fields default values."""
         obj = AwsRunPowerShellScriptInputs()
-        assert obj.runCommand == []
+        assert not obj.runCommand
         assert obj.timeoutSeconds is None
         assert obj.workingDirectory is None

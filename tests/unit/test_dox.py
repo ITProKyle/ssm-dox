@@ -179,7 +179,7 @@ class TestDoxLoader:
             line.rstrip() for line in (dox_path / "script.sh").read_text().split("\n")
         ]
         expected.pop()  # remove empty last line
-        with open(raw_file, "r") as f:
+        with open(raw_file, "r", encoding="UTF-8") as f:
             result = yaml.load(f, Loader=DoxLoader)
         assert result["mainSteps"][0]["inputs"]["runCommand"] == expected
 
@@ -203,7 +203,7 @@ class TestDoxLoader:
         """Test !LinuxOnly."""
         raw_file = dox_dir / "ExampleLinux" / "template.yml"
         expected = {"StringEquals": ["platformType", "Linux"]}
-        with open(raw_file, "r") as f:
+        with open(raw_file, "r", encoding="UTF-8") as f:
             result = yaml.load(f, Loader=DoxLoader)
         assert result["mainSteps"][0]["precondition"] == expected
 
@@ -211,6 +211,6 @@ class TestDoxLoader:
         """Test !WindowsOnly."""
         raw_file = dox_dir / "ExampleWindows" / "template.yml"
         expected = {"StringEquals": ["platformType", "Windows"]}
-        with open(raw_file, "r") as f:
+        with open(raw_file, "r", encoding="UTF-8") as f:
             result = yaml.load(f, Loader=DoxLoader)
         assert result["mainSteps"][0]["precondition"] == expected

@@ -15,7 +15,6 @@ categories:
     label: maintenance
 
 exclude-labels:
-  - documentation
   - release
   - skip-changelog
 

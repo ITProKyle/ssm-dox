@@ -34,7 +34,7 @@ class DoxLoader(yaml.SafeLoader):
     def construct_include_script(self, node: yaml.Node) -> Any:
         """Handle !IncludeScript."""
         script = self._root / str(self.construct_scalar(node))  # type: ignore
-        with open(script, "r") as f:
+        with open(script, "r", encoding="UTF-8") as f:
             return [line.rstrip() for line in f.readlines()]
 
     # pylint: disable=no-self-use,unused-argument
@@ -72,7 +72,7 @@ class Dox(NestedFileMixin):
     def content(self) -> SsmDocumentDataModel:
         """Content of the Dox."""
         LOGGER.debug("loading %s...", self.template)
-        with open(self.template, "r") as f:
+        with open(self.template, "r", encoding="UTF-8") as f:
             content = yaml.load(f, Loader=DoxLoader)  # type: ignore
         LOGGER.debug("parsing %s with data model...", self.template)
         return SsmDocumentDataModel.parse_obj(content)
