@@ -14,7 +14,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '15'
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         with:
           key: ${{ runner.os }}-${{ hashFiles('**/poetry.lock') }}
           path: .venv
